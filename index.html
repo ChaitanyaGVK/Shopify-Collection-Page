@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="#">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Collection</title>
+    <link rel="stylesheet" href="additionalStyles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container p-0 my-0">
+        <header>
+            <div class="shopping-bag float-right" onclick = "toggleCart(true, true)">
+                    <img src="./icons/bag.png" alt="cart">
+                    <div class="total-items-in-cart">
+                        0
+                    </div>
+            </div>
+            <div class="header-content">                
+                <img class ="appLogo" src="./icons/logo.png" alt= "HULK APPS" class="mx-auto d-block">
+                <h4 class="text-center">Featured Collection</h4>
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br> sed do eiusmod tempor incididunt.</span>
+            </div>
+        </header>
+        <div class="products-list" style = "display: none">
+            <div class="productSpace">    
+                <button type="button" class="btn btn-outline-dark" onclick="toggleCollectionDisplay(1)">Men</button>
+                <button type="button" class="btn btn-outline-dark" onclick="toggleCollectionDisplay(0)">Women</button>
+                <div class="products row">
+                    <!-- This is to render collection received from API -->
+                </div>
+            </div>  
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">4</a></li>
+                <li class="page-item"><a class="page-link" href="javascript:void(0);">-></a></li>
+            </ul>  
+        </div>
+        <div class="spinner-border text-muted"></div>
+        <div class = "modal"></div>
+        <div class="cart card" style = "display: none">
+            <div class="cart-header card-header">
+                <h4 class="cart-item-count">YOUR BAG</h4>
+                <button class="btn" onclick = "toggleCart(false, false)">X</button>
+            </div>
+            <div class="cart-items card-body">
+                <!-- Cart Items will go here -->
+            </div>
+            <div class="cart-footer card-footer">
+                <span class="subtotal-text">
+                    SUBTOTAL
+                </span>
+                <span class="subtotal-value">
+                    
+                </span>
+                <button class="checkout btn btn-dark btn-block">
+                    CHECKOUT
+                </button>
+                <p class="disclaimer">
+                    Have a promo code? Enter your code at checkout.<br>
+                    Shipping & taxes are calculated during checkout.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize namespace
+        window.shopifyApp = {};
+        const appNameSpace = window.shopifyApp;
+        appNameSpace.classes = {};
+    </script>
+    <script src="http://sdks.shopifycdn.com/js-buy-sdk/v2/latest/index.umd.min.js"></script>
+    <script src="./shopifySDK.js"></script>
+    <script src="./components/productFactory.js"></script>
+    <script src="./components/cartItems.js"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
